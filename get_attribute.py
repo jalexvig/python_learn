@@ -8,9 +8,9 @@ class Foo(object):
         print('Foo called __getattribute__ on {0}'.format(item))
         return super().__getattribute__(item)
 
-    # def __getattr__(self, item):
-    #     print('Foo called __getattr__ on {0}'.format(item))
-    #     return super().__getattr__(item)
+    def __getattr__(self, item):
+        print('Foo called __getattr__ on {0}'.format(item))
+        return super().__getattr__(item)
 
 
 class Bar(Foo):
@@ -18,9 +18,9 @@ class Bar(Foo):
         print('Bar called __getattribute__ on {0}'.format(item))
         return super().__getattribute__(item)
 
-    # def __getattr__(self, item):
-    #     print('Bar called __getattr__ on {0}'.format(item))
-    #     return super().__getattr__(item)
+    def __getattr__(self, item):
+        print('Bar called __getattr__ on {0}'.format(item))
+        return super().__getattr__(item)
 
 if __name__ == '__main__':
     b = Bar()
