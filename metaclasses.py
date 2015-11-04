@@ -19,12 +19,13 @@ class MyMetaClass(type):
         print("bases = ", bases)
         print("namespace = ", namespace)
         print("kwds = ", kwds, '\n')
-#        upper_attr_dict = {}
-#        for key, val in attr_dict.items():
-#            if key[:2] != '__': upper_attr_dict[key.upper()] = val
+        upper_attr_dict = {}
+        for key, val in namespace.items():
+            key_mod = key.upper() if key[:2] != '__' else key
+            upper_attr_dict[key_mod] = val
 
-        result = super().__new__(mcls, clsname, bases, namespace)
-        result.members = tuple(namespace)
+        result = super().__new__(mcls, clsname, bases, upper_attr_dict)
+        result.original_namespace = namespace
         return result
 
     def __init__(cls, clsname, bases, namespace, **kwds):
@@ -47,20 +48,20 @@ class MyMetaClass(type):
 class Foo(object, metaclass=MyMetaClass, temp='hi'):
 
     def __new__(cls):
-        print("Foo __new__ called")
+        print("Foo __new__ called\n")
         return super().__new__(cls)
 
     def __init__(self):
-        print("Foo __init__ called")
+        print("Foo __init__ called\n")
 
     def my_func(self):
-        print("My function")
+        print("My function\n")
 
     a = 3
 
 if __name__ == '__main__':
 
-    print("Foo members = ", Foo.members, '\n')
+    print('Start executing commands...\n')
 
     foo = Foo()
-    # print(foo)
+    print('Foo.__dict__ == ', Foo.__dict__)

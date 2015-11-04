@@ -3,6 +3,8 @@
 # descriptors priority over instance variables, instance variables priority over non-data descriptors, and assigns
 # lowest priority to __getattr__() if provided.
 
+# Note that setting a class attribute descriptor does not work
+
 # For classes, the machinery is in type.__getattribute__() which transforms B.x into B.__dict__['x'].__get__(None, B).
 
 # https://docs.python.org/3.4/howto/descriptor.html
@@ -40,6 +42,7 @@ if __name__ == '__main__':
     f.x = 5
     print(f.__dict__)
     g = Foo()  # g.x now returns 5
+    print(g.x)
     print(g.__dict__)
     g.z = 4
     print(g.__dict__)

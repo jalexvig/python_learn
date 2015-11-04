@@ -39,12 +39,22 @@ s_extend_plus = {
     'stmt': 'l += [1, 1]'
 }
 
+s_filter = {
+    'setup': 'l = list(range(20)); f = lambda x: x%2',
+    'stmt': 'list(filter(f, l))'
+}
+
+s_filter_gen_exp = {
+    'setup': 'l = list(range(20))',
+    'stmt': 'list((x for x in l if x%2))'
+}
+
 if __name__ == '__main__':
 
-    extra_params = {'number': 1000000}
+    extra_params = {'number': 1000}
 
-    s1 = s_extend
-    s2 = s_extend_plus
+    s1 = s_filter
+    s2 = s_filter_gen_exp
 
     s1.update(extra_params)
     s2.update(extra_params)
