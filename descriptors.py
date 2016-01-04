@@ -46,3 +46,5 @@ if __name__ == '__main__':
     print(g.__dict__)
     g.z = 4
     print(g.__dict__)
+    Foo.x = 2
+    print(f.x)
