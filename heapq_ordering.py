@@ -1,13 +1,15 @@
 import heapq
 import functools
 
+
 @functools.total_ordering
 class Foo(object):
     def __init__(self, x):
-        self._x = x
+        self.x = x
 
     def __eq__(self, other):
-        return self._x == other._x
+        return self.x == other.x
+
 
 f1 = Foo(1)
 l = [f1]

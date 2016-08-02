@@ -3,10 +3,12 @@ import queue
 import time
 import numpy as np
 
+
 def my_fn(x):
     time.sleep(np.random.rand())
     print(-x)
     return x
+
 
 def worker(fn, jobs_q, results_q):
 
@@ -14,6 +16,7 @@ def worker(fn, jobs_q, results_q):
 
         res = fn(*args)
         results_q.put(res)
+
 
 def apply_async_ll(fn, iterable, nprocs=2):
 
@@ -49,6 +52,7 @@ def apply_async_ll(fn, iterable, nprocs=2):
         proc.join()
 
     return results
+
 
 if __name__ == '__main__':
 

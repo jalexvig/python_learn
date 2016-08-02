@@ -9,6 +9,7 @@
 
 # https://docs.python.org/3.4/howto/descriptor.html
 
+
 class MyDesc(object):
 
     def __init__(self, val=None, name="var"):
@@ -24,11 +25,13 @@ class MyDesc(object):
         print("Setting", self._name)
         self._val = value
 
+
 class MyNonDataDesc(object):
 
     def __get__(self, obj, type=None):
         print(self, obj, type)
         return "Getting non data desc"
+
 
 class Foo(object):
     x = MyDesc(4, 'x')
@@ -46,5 +49,4 @@ if __name__ == '__main__':
     print(g.__dict__)
     g.z = 4
     print(g.__dict__)
-    Foo.x = 2
-    print(f.x)
+    print(g.z)

@@ -1,5 +1,4 @@
 class MyMetaclass(type):
-
     def __init__(cls, clsname, bases, namespace, **kwds):
         cls.objects = []
         print("MyMetaClass init called")
@@ -10,10 +9,11 @@ class MyMetaclass(type):
         cls.objects.append(obj)
         return obj
 
-class Foo(metaclass=MyMetaclass):
 
+class Foo(metaclass=MyMetaclass):
     def __init__(self):
         print("object init called")
+
 
 if __name__ == '__main__':
     foo = Foo()

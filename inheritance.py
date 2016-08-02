@@ -1,20 +1,21 @@
-
 class A(object):
     def __new__(cls):
         return super().__new__(cls)
 
     def __init__(self):
-        print(self)
+        print('A init', self)
+
 
 class B(A):
     def __new__(cls):
-        print(cls)
+        print('B new', cls)
         return super().__new__(cls)
 
     def __init__(self):
-        print(self)
-        print(super())
-        return super().__init__()
+        print('B init', self)
+        print('B init super', super())
+        super().__init__()
+
 
 b = B()
 print(B)

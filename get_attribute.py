@@ -22,6 +22,7 @@ class Bar(Foo):
         print('Bar called __getattr__ on {0}'.format(item))
         return super().__getattr__(item)
 
+
 if __name__ == '__main__':
     b = Bar()
     # b.x = 4

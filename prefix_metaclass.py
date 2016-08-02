@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 class MyMetaClass(type):
 
     @classmethod
@@ -10,6 +8,7 @@ class MyMetaClass(type):
 
         personalized_namespace = {'m_' + k if k[:2] != 'm_' else k: v for k, v in namespace.items()}
         return super().__new__(mcls, clsname, bases, personalized_namespace)
+
 
 class Foo(object, metaclass=MyMetaClass):
     def method(self):

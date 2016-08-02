@@ -1,5 +1,6 @@
 import collections
 
+
 class MyMetaClass(type):
 
     @classmethod
@@ -44,6 +45,7 @@ class MyMetaClass(type):
         print("cls = ", cls)
         print("super = ", super(), '\n')
         return super().__call__()
+
 
 class Foo(object, metaclass=MyMetaClass, temp='hi'):
 

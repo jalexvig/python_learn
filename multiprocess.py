@@ -1,13 +1,16 @@
 import multiprocessing as mp
 
+
 def g(y):
     for x in range(y):
         print('gen ', x)
         yield x
 
+
 def myfn(x):
     print('fn ', x)
     return x
+
 
 if __name__ == '__main__':
 
