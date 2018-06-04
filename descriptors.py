@@ -38,7 +38,9 @@ class Foo(object):
     y = 0
     z = MyNonDataDesc()
 
+
 if __name__ == '__main__':
+
     f = Foo()
     print(Foo.__dict__)
     print(f.__dict__)
